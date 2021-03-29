@@ -3,3 +3,4 @@
 js/*
 *.swp
 *.swo
+node_modules
