@@ -1,10 +1,12 @@
-var el = wp.element.createElement,
+var Vel = wp.element.createElement,
     __ = wp.i18n.__,
     registerBlockType = wp.blocks.registerBlockType,
     RichText = wp.blocks.RichText,
     blockStyle = { backgroundColor: '#900', color: '#fff', padding: '20px' };
-registerBlockType( 'guten-tuts/alert', {
-    title: __( 'Guten Tuts - Alert' ),
+
+registerBlockType( 'yamnish/m100', {
+
+    title: __( 'M100' ),
 
     icon: 'megaphone',
 
