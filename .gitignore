@@ -1,3 +1,5 @@
 .lvimrc
 .session.vim
 js/*
+*.swp
+*.swo
