@@ -20,13 +20,37 @@ registerBlockType('yamnish/m100', {
     // custom attributes
 	// we need:
 	// name - string
-	// price - float
+	// price - float (string)
 	// numbs of diameters - int
 	// diameters - array float
 	// numbs of packages - int
 	// packages - array float
 	// image - text
     attributes: {
+		name: {
+			type: 'string'
+		},
+		price: {
+			type: 'string'
+		},
+		diameters_count: {
+			type: 'integer'
+		},
+		diameters: {
+			type: 'array',
+			default: []
+		},
+		packages_count: {
+			type: 'integer'
+		},
+		packages: {
+			type: 'array',
+			default: []
+		},
+		image: {
+			type: 'string'
+		}
+		
         //title: {
             //type: 'string',
         //},
@@ -42,6 +66,41 @@ registerBlockType('yamnish/m100', {
     },
 
     edit({ attributes, setAttributes }) {
+		var {
+			name,
+			price,
+			diameters,
+			diameters_count,
+			packages,
+			packages_count,
+			image
+		} = attributes;
+
+		function onChangePrice(newPrice) {
+			setAttributes( { price: newPrice } );
+		}
+		function onChangeName(newName) {
+			setAttributes( { name: newName } );
+		}
+		function onChangeImage(newImage) {
+			setAttributes( { image: newImage } );
+		}
+		function addToDiameters(newDiameter) {
+			diameters.push(newDiameter);
+		}
+		function addToPackages(newPackage) {
+			packages.push(newPackage);
+		}
+		function removeFromDiameters(oldDiameter) {
+		 var diameters = this.state.diameters.splice(
+			 this.state.diameters.indexOf( oldDiameter ), 1
+		 );
+		}
+		function removeFromPackages(oldPackage) {
+		 var packages = this.state.packages.splice(
+			 this.state.packages.indexOf( oldPackage ), 1
+		 );
+		}
         //const {
             //title,
             //body,
