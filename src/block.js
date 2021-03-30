@@ -12,98 +12,106 @@ const {
 } = wp.components;
 
 registerBlockType('yamnish/m100', {
-    title: 'Two column text',
-    description: 'A25 Bootstrap block with two column text',
+    title: 'M100',
+    description: 'M100 block',
     icon: 'format-image',
     category: 'layout',
 
     // custom attributes
+	// we need:
+	// name - string
+	// price - float
+	// numbs of diameters - int
+	// diameters - array float
+	// numbs of packages - int
+	// packages - array float
+	// image - text
     attributes: {
-        title: {
-            type: 'string',
-        },
-        body: {
-            type: 'string',
-        },
-        title2: {
-            type: 'string',
-        },
-        body2: {
-            type: 'string',
-        },
+        //title: {
+            //type: 'string',
+        //},
+        //body: {
+            //type: 'string',
+        //},
+        //title2: {
+            //type: 'string',
+        //},
+        //body2: {
+            //type: 'string',
+        //},
     },
 
     edit({ attributes, setAttributes }) {
-        const {
-            title,
-            body,
-            title2,
-            body2,
-        } = attributes;
+        //const {
+            //title,
+            //body,
+            //title2,
+            //body2,
+        //} = attributes;
 
         // custom functions
-        function onChangeTitle(newTitle) {
-            setAttributes( { title: newTitle } );
-        }
+        //function onChangeTitle(newTitle) {
+            //setAttributes( { title: newTitle } );
+        //}
 
-        function onChangeBody(newBody) {
-            setAttributes( { body: newBody } );
-        }
-        function onChangeTitle2(newTitle) {
-            setAttributes( { title2: newTitle } );
-        }
+        //function onChangeBody(newBody) {
+            //setAttributes( { body: newBody } );
+        //}
+        //function onChangeTitle2(newTitle) {
+            //setAttributes( { title2: newTitle } );
+        //}
 
-        function onChangeBody2(newBody) {
-            setAttributes( { body2: newBody } );
-        }
+        //function onChangeBody2(newBody) {
+            //setAttributes( { body2: newBody } );
+        //}
 
 
         return ([
-            <div>
-            <RichText key="editable"
-            tagName="h2"
-            placeholder="Заголовок"
-            value={ title }
-            onChange={ onChangeTitle }/>
-            <RichText key="editable"
-            tagName="p"
-            placeholder="Текст"
-            value={ body }
-            onChange={ onChangeBody }/>
-            <RichText key="editable"
-            tagName="h2"
-            placeholder="Заголовок2"
-            value={ title2 }
-            onChange={ onChangeTitle2 }/>
-            <RichText key="editable"
-            tagName="p"
-            placeholder="Текст2"
-            value={ body2 }
-            onChange={ onChangeBody2 }/>
-            </div>
+            //<div>
+            //<RichText key="editable"
+            //tagName="h2"
+            //placeholder="Заголовок"
+            //value={ title }
+            //onChange={ onChangeTitle }/>
+            //<RichText key="editable"
+            //tagName="p"
+            //placeholder="Текст"
+            //value={ body }
+            //onChange={ onChangeBody }/>
+            //<RichText key="editable"
+            //tagName="h2"
+            //placeholder="Заголовок2"
+            //value={ title2 }
+            //onChange={ onChangeTitle2 }/>
+            //<RichText key="editable"
+            //tagName="p"
+            //placeholder="Текст2"
+            //value={ body2 }
+            //onChange={ onChangeBody2 }/>
+            //</div>
         ]);
     },
 
     save({ attributes }) {
-        const {
-            title,
-            body,
-            title2,
-            body2,
+        //const {
+            //title,
+            //body,
+            //title2,
+            //body2,
 
-        } = attributes;
+        //} = attributes;
 
         return (
-            <div class="row">
-            <div class="col col-lg-6 col-md-12 box justify-content-center">
-            <RichText.Content tagName="h2" value={ title }/>
-            <RichText.Content tagName="p" value={ body }/>
-            </div>
-            <div class="col col-lg-6 col-md-12 box justify-content-center">
-            <RichText.Content tagName="h2" value={ title2 }/>
-            <RichText.Content tagName="p" value={ body2 }/>
-            </div>
-            </div>
+			<div class="row">
+            //<div class="col col-lg-6 col-md-12 box justify-content-center">
+            //<RichText.Content tagName="h2" value={ title }/>
+            //<RichText.Content tagName="p" value={ body }/>
+            //</div>
+            //<div class="col col-lg-6 col-md-12 box justify-content-center">
+            //<RichText.Content tagName="h2" value={ title2 }/>
+            //<RichText.Content tagName="p" value={ body2 }/>
+            //</div>
+			</div>
         );
     }
 });
