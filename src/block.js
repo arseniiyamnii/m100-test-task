@@ -66,7 +66,7 @@ registerBlockType('yamnish/m100', {
 			setAttributes( { diameters: diameters.slice() } );
 		}
 		function removeFromDiameters(newDiameter) {
-            diameters.splice(diameters.indexOf( newDiameter ), 1);
+			diameters.splice(diameters.indexOf( newDiameter ), 1);
 			setAttributes( { diameters: diameters.slice() } );
 		}
 
@@ -74,16 +74,21 @@ registerBlockType('yamnish/m100', {
 			setAttributes( { newDiameter: newDia } );
 		}
 
-		return ([
-			<div>
+		return ([<div>
 				<RichText key="edible" tagname="p"
-					placehlder="dia" value={ newDiameter } onChange={ onChangeNewDia }/>
-				<button onClick={ () => addToDiameters(newDiameter) }> add diameters </button>
-				<button onClick={ () => removeFromDiameters(newDiameter) }> remove diameter </button>
+					placehlder="dia" value={ newDiameter }
+					onChange={ onChangeNewDia }/>
+				<button onClick={ () => addToDiameters(newDiameter) }>
+					add diameters </button>
+				<button onClick={ () => removeFromDiameters(newDiameter) }>
+					remove diameter </button>
+				<ul>
+					{diameters.map(diameter => 
+						<li>{diameter}</li>)
+					}
+				</ul>
 				
-			</div>
-			
-		]);
+		</div>]);
 	},
 
 	save({ attributes }) {
