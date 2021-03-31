@@ -25,15 +25,9 @@ registerBlockType('yamnish/m100', {
 		price: {
 			type: 'string'
 		},
-		diameters_count: {		//maybe unused
-			type: 'integer'
-		},
 		diameters: {
 			type: 'array',
 			default: []
-		},
-		packages_count: {	  //maybe unused
-			type: 'integer'
 		},
 		packages: {
 			type: 'array',
@@ -41,19 +35,21 @@ registerBlockType('yamnish/m100', {
 		},
 		image: {
 			type: 'string'
+		},
+		newDiameter: {
+			type: 'string'
 		}
-	
-    },
+
+		},
 
 	edit({ attributes, setAttributes }) {
-		var {
+		const {
 			name,
 			price,
 			diameters,
-			diameters_count,
 			packages,
-			packages_count,
-			image
+			image,
+			newDiameter
 		} = attributes;
 
 		function onChangePrice(newPrice) {
@@ -67,69 +63,38 @@ registerBlockType('yamnish/m100', {
 		}
 		function addToDiameters(newDiameter) {
 			diameters.push(newDiameter);
+			setAttributes( { diameters: diameters.slice() } );
 		}
-		function addToPackages(newPackage) {
-			packages.push(newPackage);
+		function removeFromDiameters(newDiameter) {
+			setAttributes( { diameters: diameters.splice(
+				diameters.indexOf( newDiameter ), 1
+			) } );
+			console.log(diameters);
 		}
-		function removeFromDiameters(oldDiameter) {
-			var diameters = this.state.diameters.splice(
-				this.state.diameters.indexOf( oldDiameter ), 1
-			);
-		}
-		function removeFromPackages(oldPackage) {
-			var packages = this.state.packages.splice(
-				this.state.packages.indexOf( oldPackage ), 1
-			);
+
+		function onChangeNewDia(newDia) {
+			setAttributes( { newDiameter: newDia } );
 		}
 
 
 		return ([
-            //<div>
-		//<RichText key="editable"
-		//tagName="h2"
-		//placeholder="Заголовок"
-		//value={ title }
-		//onChange={ onChangeTitle }/>
-		//<RichText key="editable"
-		//tagName="p"
-		//placeholder="Текст"
-		//value={ body }
-		//onChange={ onChangeBody }/>
-		//<RichText key="editable"
-		//tagName="h2"
-		//placeholder="Заголовок2"
-		//value={ title2 }
-		//onChange={ onChangeTitle2 }/>
-		//<RichText key="editable"
-		//tagName="p"
-		//placeholder="Текст2"
-		//value={ body2 }
-		//onChange={ onChangeBody2 }/>
-            //</div>
+			<div>
+				<RichText key="edible" tagname="p"
+					placehlder="dia" value={ newDiameter } onChange={ onChangeNewDia }/>
+				<button onClick={ () => addToDiameters(newDiameter) }> add diameters </button>
+				<button onClick={ () => removeFromDiameters(newDiameter) }> remove diameter </button>
+				
+			</div>
+			
 		]);
 	},
 
 	save({ attributes }) {
-        //const {
-            //title,
-            //body,
-            //title2,
-            //body2,
-
-        //} = attributes;
 
 		return (
 			<div>
-            //<div class="col col-lg-6 col-md-12 box justify-content-center">
-            //<RichText.Content tagName="h2" value={ title }/>
-            //<RichText.Content tagName="p" value={ body }/>
-            //</div>
-            //<div class="col col-lg-6 col-md-12 box justify-content-center">
-            //<RichText.Content tagName="h2" value={ title2 }/>
-            //<RichText.Content tagName="p" value={ body2 }/>
-            //</div>
 			</div>
-        );
-    }
+			);
+		}
 });
 
