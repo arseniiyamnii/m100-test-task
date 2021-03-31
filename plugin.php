@@ -20,8 +20,23 @@ function m100block() {
 			'wp-editor',
 			'wp-components')
 	);
-    register_block_type( 'yamnish/m100', array(
+	register_block_type( 'yamnish/m100', array(
 		'editor_script' => 'm100-block',
 	));
 }
 add_action( 'init', 'm100block' );
+
+function my_block_plugin_scripts() {
+
+	// Enqueue block editor styles
+	wp_enqueue_style(
+		'my-block-css',
+		plugins_url( '/css/style.css', __FILE__ ),
+		[],
+		filemtime( plugin_dir_path( __FILE__ ) . 'css/style.css' )
+	);
+
+}
+
+// Hook the enqueue functions into the frontend and editor
+add_action( 'enqueue_block_assets', 'my_block_plugin_scripts' );
