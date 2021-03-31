@@ -66,16 +66,13 @@ registerBlockType('yamnish/m100', {
 			setAttributes( { diameters: diameters.slice() } );
 		}
 		function removeFromDiameters(newDiameter) {
-			setAttributes( { diameters: diameters.splice(
-				diameters.indexOf( newDiameter ), 1
-			) } );
-			console.log(diameters);
+            diameters.splice(diameters.indexOf( newDiameter ), 1);
+			setAttributes( { diameters: diameters.slice() } );
 		}
 
 		function onChangeNewDia(newDia) {
 			setAttributes( { newDiameter: newDia } );
 		}
-
 
 		return ([
 			<div>
