@@ -1,17 +1,14 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const watch = require('gulp-watch');
+var sass = require('gulp-sass');
+sass.compiler = require('node-sass');
 
-gulp.task('stream', function () {
-    // Endless stream mode
-    return watch('src/*.js', { ignoreInitial: false })
-        .pipe(babel({
-            plugins: ['@babel/plugin-transform-react-jsx']
-        }))
-        .pipe(gulp.dest('js'))
-    //.pipe(gulp.dest('js'));
+
+gulp.task('watcher', function() {
+  gulp.watch('sass/*.scss', gulp.series('sass'));
+  gulp.watch('src/*.js', gulp.series('js'));
 });
-
 
 
 gulp.task('js', () =>
@@ -21,3 +18,13 @@ gulp.task('js', () =>
     }))
     .pipe(gulp.dest('js'))
 );
+
+gulp.task('sass', function () {
+  return gulp.src('./sass/*.scss')
+    .pipe(sass({indentedSyntax: true}).on('error', sass.logError))
+    .pipe(gulp.dest('./css'));
+});
+
+gulp.task('sass:watch', function () {
+  gulp.watch('./sass/*.scss', ['sass']);
+});
