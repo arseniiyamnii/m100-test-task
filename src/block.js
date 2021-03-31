@@ -69,32 +69,44 @@ registerBlockType('yamnish/m100', {
 			diameters.splice(diameters.indexOf( newDiameter ), 1);
 			setAttributes( { diameters: diameters.slice() } );
 		}
-
 		function onChangeNewDia(newDia) {
 			setAttributes( { newDiameter: newDia } );
 		}
-
 		return ([<div>
 				<RichText key="edible" tagname="p"
 					placehlder="dia" value={ newDiameter }
 					onChange={ onChangeNewDia }/>
-				<button onClick={ () => addToDiameters(newDiameter) }>
+				<button onClick={ 
+					() => addToDiameters(newDiameter) }>
 					add diameters </button>
-				<button onClick={ () => removeFromDiameters(newDiameter) }>
+				<button onClick={ 
+					() => removeFromDiameters(newDiameter) }>
 					remove diameter </button>
 				<ul>
 					{diameters.map(diameter => 
 						<li>{diameter}</li>)
 					}
 				</ul>
-				
 		</div>]);
 	},
 
 	save({ attributes }) {
+		const {
+			name,
+			price,
+			diameters,
+			packages,
+			image,
+			newDiameter
+		} = attributes;
 
 		return (
 			<div>
+				<ul>
+					{diameters.map(diameter => 
+						<li>{diameter}</li>)
+					}
+				</ul>
 			</div>
 			);
 		}
