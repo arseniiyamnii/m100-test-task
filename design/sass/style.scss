@@ -7,6 +7,9 @@ h1
 	font-size: 20pt
 	font-weight: 700
 
+
+.glyphicon
+	color: red
 .mwidget
 	padding-left: 40px
 	background-color: grey
@@ -53,8 +56,22 @@ h1
 	font-size: 17pt
 	font-weight: 400
 
-.but-buy 
+.buy 
 	font-weight: 500
+	background-color: white
+	border-width: 2px
+	border: solid
+	padding: 15px
+	border-color: red
+	color: red
+	border-radius: 5px
+	
+	&:hover
+		background-color: pink
+	&:active
+		background-color: red
+		color: white
+	
 
 
 @media (min-width: 0) 
@@ -100,7 +117,7 @@ h1
 	 
 	.good-img img  
 		position: absolute
-		right: 50px
+		right: 20px
 	 
 
 	.price  
@@ -134,7 +151,7 @@ h1
 	 
 	.good-img img  
 		position: absolute
-		right: 250px
+		right: 50px
 	 
 
 	.price  
