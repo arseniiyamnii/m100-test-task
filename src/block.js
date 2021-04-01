@@ -36,7 +36,7 @@ registerBlockType('yamnish/m100', {
 		image: {
 			type: 'string'
 		},
-		newDiameter: {
+		editDiameter: {
 			type: 'string'
 		}
 
@@ -49,7 +49,7 @@ registerBlockType('yamnish/m100', {
 			diameters,
 			packages,
 			image,
-			newDiameter
+			editDiameter
 		} = attributes;
 
 		function onChangePrice(newPrice) {
@@ -61,26 +61,26 @@ registerBlockType('yamnish/m100', {
 		function onChangeImage(newImage) {
 			setAttributes( { image: newImage } );
 		}
-		function addToDiameters(newDiameter) {
-			diameters.push(newDiameter);
+		function addToDiameters(editDiameter) {
+			diameters.push(editDiameter);
 			setAttributes( { diameters: diameters.slice() } );
 		}
-		function removeFromDiameters(newDiameter) {
-			diameters.splice(diameters.indexOf( newDiameter ), 1);
+		function removeFromDiameters(editDiameter) {
+			diameters.splice(diameters.indexOf( editDiameter ), 1);
 			setAttributes( { diameters: diameters.slice() } );
 		}
 		function onChangeNewDia(newDia) {
-			setAttributes( { newDiameter: newDia } );
+			setAttributes( { editDiameter: newDia } );
 		}
 		return ([<div>
 				<RichText key="edible" tagname="p"
-					placehlder="dia" value={ newDiameter }
+					placehlder="dia" value={ editDiameter }
 					onChange={ onChangeNewDia }/>
 				<button onClick={ 
-					() => addToDiameters(newDiameter) }>
+					() => addToDiameters(editDiameter) }>
 					add diameters </button>
 				<button onClick={ 
-					() => removeFromDiameters(newDiameter) }>
+					() => removeFromDiameters(editDiameter) }>
 					remove diameter </button>
 				<ul>
 					{diameters.map(diameter => 
@@ -97,7 +97,7 @@ registerBlockType('yamnish/m100', {
 			diameters,
 			packages,
 			image,
-			newDiameter
+			editDiameter
 		} = attributes;
 
 		return (
