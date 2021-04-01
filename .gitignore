@@ -5,3 +5,4 @@ js/*
 *.swo
 node_modules
 css/*
+design/style.css
