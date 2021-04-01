@@ -30,6 +30,12 @@ function my_block_plugin_scripts() {
 
 	// Enqueue block editor styles
 	wp_enqueue_style(
+		'my-block-bootstrap-css',
+		plugins_url( '/css/bootstrap.css', __FILE__ ),
+		[],
+		filemtime( plugin_dir_path( __FILE__ ) . 'css/bootstrap.css' )
+	);
+	wp_enqueue_style(
 		'my-block-css',
 		plugins_url( '/css/style.css', __FILE__ ),
 		[],
