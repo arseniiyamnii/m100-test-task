@@ -38,6 +38,9 @@ registerBlockType('yamnish/m100', {
 		},
 		editDiameter: {
 			type: 'string'
+		},
+		editPackage: {
+			type: 'string'
 		}
 
 		},
@@ -49,7 +52,8 @@ registerBlockType('yamnish/m100', {
 			diameters,
 			packages,
 			image,
-			editDiameter
+			editDiameter,
+			editPackage
 		} = attributes;
 
 		function onChangePrice(newPrice) {
@@ -61,6 +65,8 @@ registerBlockType('yamnish/m100', {
 		function onChangeImage(newImage) {
 			setAttributes( { image: newImage } );
 		}
+		// Diameters functions
+		//
 		function addToDiameters(editDiameter) {
 			diameters.push(editDiameter);
 			setAttributes( { diameters: diameters.slice() } );
@@ -72,7 +78,22 @@ registerBlockType('yamnish/m100', {
 		function onChangeNewDia(newDia) {
 			setAttributes( { editDiameter: newDia } );
 		}
-		return ([<div>
+		// Packages functions
+		//
+		function addToPackages(editPackage) {
+			packages.push(editPackage);
+			setAttributes( { packages: packages.slice() } );
+		}
+		function removeFromPackages(editPackage) {
+			packages.splice(packages.indexOf( editPackage ), 1);
+			setAttributes( { packages: packages.slice() } );
+		}
+		function onChangeNewPack(newPack) {
+			setAttributes( { editPackage: newPack } );
+		}
+		return ([
+			<div>
+				{/* add diameters */}
 				<RichText key="edible" tagname="p"
 					placehlder="dia" value={ editDiameter }
 					onChange={ onChangeNewDia }/>
@@ -87,7 +108,23 @@ registerBlockType('yamnish/m100', {
 						<li>{diameter}</li>)
 					}
 				</ul>
-		</div>]);
+				{/* add packages */}
+				<RichText key="edible" tagname="p"
+					placehlder="pack" value={ editPackage }
+					onChange={ onChangeNewPack }/>
+				<button onClick={ 
+					() => addToPackages(editPackage) }>
+					add pack </button>
+				<button onClick={ 
+					() => removeFromPackages(editPackage) }>
+					remove pack </button>
+				<ul>
+					{packages.map(onePackage => 
+						<li>{onePackage}</li>)
+					}
+				</ul>
+			</div>
+		]);
 	},
 
 	save({ attributes }) {
@@ -96,15 +133,19 @@ registerBlockType('yamnish/m100', {
 			price,
 			diameters,
 			packages,
-			image,
-			editDiameter
+			image
 		} = attributes;
 
 		return (
-			<div>
+			<div class="custom-widget">
 				<ul>
 					{diameters.map(diameter => 
 						<li>{diameter}</li>)
+					}
+				</ul>
+				<ul>
+					{packages.map(onePackage => 
+						<li>{onePackage}</li>)
 					}
 				</ul>
 			</div>
