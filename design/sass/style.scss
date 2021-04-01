@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap")
+
+body 
+	font-family: "Roboto", sans-serif
+
+h1 
+	font-size: 20pt
+	font-weight: 700
+
+.mwidget
+	padding-left: 40px
+	background-color: grey
+
+.chooser
+	padding: 0
+	list-style-type: none
+
+
+	li
+		float: left
+		margin: 0 2px 0 2px
+
+		button 
+			margin-left: 5px
+			padding: 5px
+			border: solid
+			border-width: 1px
+			border-color: white
+			font-weight: 400
+			color: black
+			border-radius: 5px
+			background-color: white
+
+
+			&:hover 
+				border: solid
+				border-width: 1px
+				border-color: red
+				font-weight: 400
+				background-color: pink
+
+
+			&:active 
+				border: solid
+				border-width: 1px
+				border-color: red
+				font-weight: 400
+				color: white
+				background-color: red
+
+
+.col-type 
+	font-size: 17pt
+	font-weight: 400
+
+.but-buy 
+	font-weight: 500
+
+
+@media (min-width: 0) 
+	.mwidget 
+		display: grid
+
+		grid-column-gap: 0
+		grid-row-gap: 0
+		grid-template-columns: 1fr
+		grid-template-rows: repeat(6, 1fr)
+	
+	.good-img img 
+		position: relative
+	
+
+	.price 
+		grid-area: 2 / 1 / 3 / 2
+	
+	.but-buy 
+		grid-area: 6 / 1 / 7 / 2
+	
+	.diameters 
+		grid-area: 3 / 1 / 4 / 2
+	 
+	.package  
+		grid-area: 4 / 1 / 5 / 2
+	 
+	.electrotype  
+		grid-area: 5 / 1 / 6 / 2
+	 
+	.good-img  
+		grid-area: 1 / 1 / 2 / 2
+	 
+ 
+@media (min-width: 768px)  
+	.mwidget  
+		display: grid
+
+		grid-column-gap: 0
+		grid-row-gap: 0
+		grid-template-columns: repeat(2, 1fr)
+		grid-template-rows: repeat(3, 1fr)
+	 
+	.good-img img  
+		position: absolute
+		right: 50px
+	 
+
+	.price  
+		grid-area: 1 / 1 / 2 / 2
+	 
+	.but-buy  
+		grid-area: 3 / 1 / 4 / 2
+	 
+	.diameters  
+		grid-area: 2 / 1 / 3 / 2
+	 
+	.package  
+		grid-area: 1 / 2 / 2 / 3
+	 
+	.electrotype  
+		grid-area: 2 / 2 / 3 / 3
+	 
+	.good-img  
+		grid-area: 3 / 2 / 4 / 3
+	 
+ 
+
+@media (min-width: 1024px)  
+	.mwidget  
+		display: grid
+
+		grid-column-gap: 0
+		grid-row-gap: 0
+		grid-template-columns: repeat(4, 1fr)
+		grid-template-rows: repeat(2, 1fr)
+	 
+	.good-img img  
+		position: absolute
+		right: 250px
+	 
+
+	.price  
+		grid-area: 1 / 1 / 2 / 2
+	 
+	.but-buy  
+		grid-area: 2 / 1 / 3 / 2
+	 
+	.diameters  
+		grid-area: 1 / 2 / 2 / 3
+	 
+	.package  
+		grid-area: 1 / 3 / 2 / 4
+	 
+	.electrotype  
+		grid-area: 1 / 4 / 2 / 5
+	 
+	.good-img  
+		grid-area: 2 / 4 / 3 / 5
+	 
+ 
