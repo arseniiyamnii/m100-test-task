@@ -7,6 +7,7 @@ sass.compiler = require('node-sass');
 
 gulp.task('watcher', function() {
   gulp.watch('sass/*.scss', gulp.series('sass'));
+  gulp.watch('design/sass/*.scss', gulp.series('sass-design'));
   gulp.watch('src/*.js', gulp.series('js'));
 });
 
@@ -23,5 +24,11 @@ gulp.task('sass', function () {
   return gulp.src('./sass/*.scss')
     .pipe(sass({indentedSyntax: true}).on('error', sass.logError))
     .pipe(gulp.dest('./css'));
+});
+
+gulp.task('sass-design', function () {
+  return gulp.src('./design/sass/*.scss')
+    .pipe(sass({indentedSyntax: true}).on('error', sass.logError))
+    .pipe(gulp.dest('./design'));
 });
 
